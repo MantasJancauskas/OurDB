@@ -21,7 +21,11 @@ require 'deletejobs.php';
 		<div class="col-md-6">
 
     <?php 
-    $sql = 'SELECT j_id, position FROM jobs;';
+    $sql = "SELECT jobs.j_id, jobs.position, GROUP_CONCAT(CONCAT_WS(' ', employees.firstname, employees.lastname) SEPARATOR ', ' ) AS People_group FROM jobs
+    LEFT JOIN employees 
+    ON jobs.j_id = employees.jobId
+    GROUP BY position
+	ORDER BY jobs.j_id";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) { ?>
@@ -31,6 +35,7 @@ require 'deletejobs.php';
         <tr>
 			<th scope="col" style="width: 5%">#</th>
 			<th scope="col">Position</th>
+			<th scope="col">People working</th>
 			<th scope="col" style="text-align: center;">Delete action</th>
         </tr>
     </thead>
@@ -39,7 +44,8 @@ require 'deletejobs.php';
              print_r($row);
                 print('<tr>' 
                     . '<td>' . $row['j_id'] . '</td>' 
-                    . '<td>' . $row['position'] . '</td>'
+                    . '<td>' . $row['position'] . '</td>' 
+                    . '<td>' . $row['People_group'] . '</td>'
                     . '<td style="text-align: center">' . '<a href="deletejobs.php?id='  . $row['j_id'] . '"><button class="btn btn-danger" style="margin-right: 8px">DELETE</button></a>'
                     . '</td>'
                     . '</tr>');

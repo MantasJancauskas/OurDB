@@ -7,7 +7,7 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Document</title>
+    <title>People manager</title>
     <style>
        .container {
         min-height: 95vh;
@@ -18,7 +18,7 @@
 <?php include 'navbar.php';?>
 <div class="container p-4">
     <?php 
-    print_r($_SESSION);
+    
     $sql = 'SELECT id, firstname, lastname, email, jobId, j.position FROM employees
             LEFT JOIN jobs AS j ON j.j_id = jobId';
         $result = mysqli_query($conn, $sql);
@@ -38,7 +38,6 @@
     </thead>
     <tbody>
         <?php while($row = mysqli_fetch_assoc($result)) {
-            //  print_r($row);
                 print('<tr>' 
                     . '<td>' . $row['id'] . '</td>' 
                     . '<td>' . $row['firstname'] . '</td>' 

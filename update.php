@@ -1,8 +1,6 @@
 <?php
 require 'connect.php';
 
-print_r($_POST);
-
 $id = $_GET['id'];
 
 $firstname = $_POST['firstname'];
