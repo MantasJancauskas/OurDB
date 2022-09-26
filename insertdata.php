@@ -16,4 +16,3 @@ $jobId = $_POST['jobId'];
     header("location: index.php");
     
 }
-?>
