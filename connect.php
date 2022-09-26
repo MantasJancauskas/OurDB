@@ -17,4 +17,3 @@
         header("Location: " . strtok($_SERVER["REQUEST_URI"], '?'));
         die();
     }
-

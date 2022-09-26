@@ -1,8 +1,8 @@
 <?php
-include 'connect.php';
+require 'connect.php';
 
 print_r($_POST);
-
+try{
 $position = $_POST['position'];
 
     $sql = "INSERT INTO jobs (position) VALUES('$position')";
@@ -12,5 +12,5 @@ $position = $_POST['position'];
 
     header("location: index.php");
     
-}
-?>
+}}
+catch (EXCEPTION){header("location: index.php");}

@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+require 'connect.php';
 
 print_r($_POST);
 
@@ -10,7 +10,7 @@ $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $jobId = $_POST['jobId'];
 
-    $sql = "UPDATE Employees SET firstname = '$firstname', lastname = '$lastname', email = '$email', jobId = '$jobId'  WHERE id = $id";
+    $sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', email = '$email', jobId = '$jobId'  WHERE id = $id";
     if ( $conn->query($sql) ) {
         session_start();
         $_SESSION['msg'] = 'Update Successfully.';

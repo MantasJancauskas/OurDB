@@ -1,87 +1,58 @@
 <?php
-$id = $_GET['id'];
-
-require 'connect.php';
-
-$sql = "SELECT * FROM employees WHERE id = $id";
-$result = $conn->query($sql);
-$employees = $result->fetch_assoc();
-session_start();
+require 'deletejobs.php';
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title> Employees </title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+	<title> Delete jobs </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<style>
+       .container {
+        min-height: 95vh;
+       }
+    </style>
 </head>
 <body>
-
+<?php include 'navbar.php';?>
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 
-			<?php if( isset($_SESSION['msg']) ) { ?>
-				<br>
-				<div class="alert alert-success" role="alert">
-				  <?php echo $_SESSION['msg']; ?>
-				</div>
-			<?php  session_destroy(); } ?>
+    <?php 
+    $sql = 'SELECT j_id, position FROM jobs;';
+        $result = mysqli_query($conn, $sql);
 
-			<a href="index.php" class="btn">Home</a>
-
-			<h1> employees Information </h1>
-
-			<a href="edit.php?id=<?php echo $employees['id']; ?>" class="btn btn-primary btn-sm"> Edit </a>
-			<br><br>
-			<table class="table table-bordered table-sm">
-				<tr>
-					<th>firstname</th>
-					<td><?php echo $employees['firstname']; ?></td>
-				</tr>
-				<tr>
-					<th>lastname</th>
-					<td><?php echo $employees['lastname']; ?></td>
-				</tr>
-				<tr>
-					<th>email</th>
-					<td><?php echo $employees['email']; ?></td>
-				</tr>
-				<tr>
-					<th>project number</th>
-					<select name="Positions">
-
-                            <option value="0"></option>
-
-                           
-
-                            <?php
-
-                                $sql = 'SELECT * FROM jobs';
-
-                                $result_jobs = mysqli_query($conn, $sql);
-
-                                while ($row = mysqli_fetch_array($result_jobs)) { ?>
-
-                                <option value="<?php echo $row['id']; ?>"><?php echo $row['position'] ;?></option>
-
-                                <?php } ?>
-
-                        </select>
-				</tr>
-			</table>
-
-
+        if (mysqli_num_rows($result) > 0) { ?>
+        
+    <table class="table">
+    <thead>
+        <tr>
+			<th scope="col" style="width: 5%">#</th>
+			<th scope="col">Position</th>
+			<th scope="col" style="text-align: center;">Delete action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php while($row = mysqli_fetch_assoc($result)) {
+             print_r($row);
+                print('<tr>' 
+                    . '<td>' . $row['j_id'] . '</td>' 
+                    . '<td>' . $row['position'] . '</td>'
+                    . '<td style="text-align: center">' . '<a href="deletejobs.php?id='  . $row['j_id'] . '"><button class="btn btn-danger" style="margin-right: 8px">DELETE</button></a>'
+                    . '</td>'
+                    . '</tr>');
+            }
+        } else {
+            echo '0 results';
+        }
+        mysqli_close($conn); ?>
+    </tbody>
+	</table>
 		</div>
 	</div>
 </div>
-	
+<?php include 'footer.php'; ?>
 </body>
 </html>
-
-
-<!-- <td><?php echo $employees['jobId']; ?></td> -->

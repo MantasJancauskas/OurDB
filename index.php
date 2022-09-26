@@ -1,5 +1,5 @@
 <?php
-    include 'connect.php';
+    require 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -10,15 +10,16 @@
     <title>Document</title>
     <style>
        .container {
-        min-height: 82.6vh;
+        min-height: 95vh;
        }
     </style>
 </head>
 <body>
-    <?php include 'navbar.php';?>
+<?php include 'navbar.php';?>
 <div class="container p-4">
     <?php 
-    $sql = 'SELECT id, firstname, lastname, email, jobId, j.position FROM Employees
+    print_r($_SESSION);
+    $sql = 'SELECT id, firstname, lastname, email, jobId, j.position FROM employees
             LEFT JOIN jobs AS j ON j.j_id = jobId';
         $result = mysqli_query($conn, $sql);
 
@@ -37,7 +38,7 @@
     </thead>
     <tbody>
         <?php while($row = mysqli_fetch_assoc($result)) {
-             print_r($row);
+            //  print_r($row);
                 print('<tr>' 
                     . '<td>' . $row['id'] . '</td>' 
                     . '<td>' . $row['firstname'] . '</td>' 

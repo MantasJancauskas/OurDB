@@ -16,13 +16,12 @@
     <title>Document</title>
     <style>
        .container {
-        min-height: 82.6vh;
+        min-height: 95vh;
        }
     </style>
 </head>
 <body>
 <?php include 'navbar.php';?>
-
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-3"></div>

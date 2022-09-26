@@ -7,13 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="insert.php">Insert new employees</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="newjob.php">New position Insert</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="show.php">Delete jobs</a>
         </li>
       </ul>
     </div>
