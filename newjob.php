@@ -9,7 +9,7 @@ require 'connect.php';
 
 <head>
 	<meta charset="UTF-8">
-	<title>New employeess </title>
+	<title>New job position </title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 	<title>Document</title>
 	<style>
@@ -36,9 +36,10 @@ require 'connect.php';
 					<button type="submit" class="btn btn-primary">Submit</button>
 
 				</form>
-				<?php if(isset($_SESSION['msg'])){
-                print_r($_SESSION['msg']);
-				session_destroy();} ?>
+				<?php if (isset($_SESSION['msg'])) {
+					print_r($_SESSION['msg']);
+					session_destroy();
+				} ?>
 
 			</div>
 		</div>
