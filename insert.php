@@ -62,6 +62,10 @@ $employees = $result->fetch_assoc();
 
 					<button type="submit" class="btn btn-primary mt-2">Submit</button>
 				</form>
+				<?php if (isset($_SESSION['msg'])) {
+					print_r($_SESSION['msg']);
+					session_destroy();
+				} ?>
 			</div>
 		</div>
 	</div>
