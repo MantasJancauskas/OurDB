@@ -10,8 +10,6 @@ $jobId = $_POST['jobId'];
 
 $sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', email = '$email', jobId = '$jobId'  WHERE id = $id";
 if ($conn->query($sql)) {
-    session_start();
     $_SESSION['msg'] = 'Update Successfully.';
-
     header("location: index.php");
 }

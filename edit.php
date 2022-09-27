@@ -42,12 +42,12 @@ $employees = $result->fetch_assoc();
 						<input type="text" value="<?php echo $employees['lastname']; ?>" class="form-control" name="lastname" placeholder="Enter lastname">
 					</div>
 
-					<div class="form-group">
+					<div class="form-group mb-2">
 						<label for="email">email</label>
 						<input type="text" value="<?php echo $employees['email']; ?>" class="form-control" name="email" placeholder="Enter email">
 					</div>
 
-					<div class="form-group">
+					<div class="form-group mb-2">
 						<select name="jobId">
 							<label for="position">email</label>
 							<option value="0"></option>

@@ -2,9 +2,6 @@
 
 require 'connect.php';
 
-$sql = "SELECT * FROM jobs";
-$result = $conn->query($sql);
-$employees = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +36,9 @@ $employees = $result->fetch_assoc();
 					<button type="submit" class="btn btn-primary">Submit</button>
 
 				</form>
-
+				<?php if(isset($_SESSION['msg'])){
+                print_r($_SESSION['msg']);
+				session_destroy();} ?>
 
 			</div>
 		</div>

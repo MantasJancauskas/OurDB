@@ -43,7 +43,7 @@ require 'deletejobs.php';
                         </thead>
                         <tbody>
                         <?php while ($row = mysqli_fetch_assoc($result)) {
-                            print_r($row);
+                            // print_r($row);
                             print('<tr>'
                                 . '<td>' . $row['j_id'] . '</td>'
                                 . '<td>' . $row['position'] . '</td>'

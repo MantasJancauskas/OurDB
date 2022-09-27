@@ -20,7 +20,7 @@ require 'connect.php';
     <?php include 'navbar.php'; ?>
     <div class="container p-4">
         <?php
-
+        
         $sql = 'SELECT id, firstname, lastname, email, jobId, j.position FROM employees
             LEFT JOIN jobs AS j ON j.j_id = jobId';
         $result = mysqli_query($conn, $sql);
@@ -53,10 +53,15 @@ require 'connect.php';
                 }
             } else {
                 echo '0 results';
+                
             }
+            
             mysqli_close($conn); ?>
                 </tbody>
             </table>
+            <?php if(isset($_SESSION['msg'])){
+                print_r($_SESSION['msg']);
+                session_destroy();} ?>
     </div>
     <?php include 'footer.php'; ?>
 </body>
