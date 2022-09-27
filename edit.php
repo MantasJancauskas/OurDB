@@ -50,7 +50,7 @@ $employees = $result->fetch_assoc();
 					<div class="form-group mb-2">
 						<select name="jobId">
 							<label for="position">email</label>
-							<option value="0"></option>
+							<option value="<?php echo $employees['jobId']; ?>"></option>
 							<?php
 							$sql1 = 'SELECT DISTINCT j_id, position FROM jobs';
 							$result_jobs = mysqli_query($conn, $sql1);

@@ -1,6 +1,7 @@
 <?php
 require 'connect.php';
 
+try {
 $id = $_GET['id'];
 
 $firstname = $_POST['firstname'];
@@ -12,4 +13,8 @@ $sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', e
 if ($conn->query($sql)) {
     $_SESSION['msg'] = 'Update Successfully.';
     header("location: index.php");
+}
+} catch(EXCEPTION) {
+    header("location: edit.php");
+    $_SESSION['msg'] = 'Select a job name.';
 }
